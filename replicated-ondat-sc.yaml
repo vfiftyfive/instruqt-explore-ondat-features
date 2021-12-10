@@ -1,0 +1,17 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  labels:
+    app: storageos
+  name: ondat-replicated
+parameters:
+  storageos.com/replicas: "2"
+  csi.storage.k8s.io/fstype: ext4
+  csi.storage.k8s.io/secret-name: storageos-api
+  csi.storage.k8s.io/secret-namespace: storageos
+provisioner: csi.storageos.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+
